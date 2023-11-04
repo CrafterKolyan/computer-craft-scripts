@@ -17,8 +17,9 @@ function refuelIfNeeded()
     end
 end
 
-allowedBlocks = Set({
+blocksWhitelist = Set({
     "minecraft:stone",
+    "minecraft:cobblestone",
     "minecraft:dirt",
     "minecraft:gravel",
     "minecraft:andesite",
@@ -32,12 +33,13 @@ allowedBlocks = Set({
     "minecraft:lapis_ore",
     "minecraft:emerald_ore",
     "minecraft:diamond_ore",
+    "thermal:apatite_ore"
 })
 
 function digGenericIfAllowed(inspectFunction, digFunction)
     local success, data = inspectFunction()
     if success then
-        local allowed = setContains(allowedBlocks, data.name)
+        local allowed = setContains(blocksWhitelist, data.name)
         if allowed then
             digFunction()
         end
