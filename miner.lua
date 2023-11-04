@@ -46,6 +46,9 @@ blocksDroplist = Set({
     "minecraft:andesite",
     "minecraft:diorite",
     "minecraft:granite",
+    "create:dolomite_cobblestone",
+    "create:diorite_cobblestone",
+    "create:grainte_cobblestone"
 })
 
 function refuelIfNeeded()
