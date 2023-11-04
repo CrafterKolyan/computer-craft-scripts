@@ -56,6 +56,7 @@ blocksWhitelist = Set({
     "create:dolomite_cobblestone",
     "create:diorite_cobblestone",
     "create:granite_cobblestone",
+    "create:andesite_cobblestone",
     "forbidden_arcanus:xpetrified_ore",
     "appliedenergistics2:quartz_ore",
     "appliedenergistics2:charged_quartz_ore",
@@ -74,6 +75,7 @@ blocksDroplist = Set({
     "create:dolomite_cobblestone",
     "create:diorite_cobblestone",
     "create:granite_cobblestone",
+    "create:andesite_cobblestone",
     "darkerdepths:aridrock",
     "darkerdepths:limestone",
 })
