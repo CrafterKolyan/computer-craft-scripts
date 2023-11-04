@@ -17,7 +17,22 @@ function refuelIfNeeded()
     end
 end
 
-allowedBlocks = Set({"minecraft:stone", "minecraft:dirt", "minecraft:gravel", "minecraft:andesite", "minecraft:diorite", "minecraft:granite"})
+allowedBlocks = Set({
+    "minecraft:stone",
+    "minecraft:dirt",
+    "minecraft:gravel",
+    "minecraft:andesite",
+    "minecraft:diorite",
+    "minecraft:granite",
+    "minecraft:coal_ore",
+    "minecraft:iron_ore",
+    "minecraft:copper_ore",
+    "minecraft:gold_ore",
+    "minecraft:redstone_ore",
+    "minecraft:lapis_ore",
+    "minecraft:emerald_ore",
+    "minecraft:diamond_ore",
+})
 
 function digGenericIfAllowed(inspectFunction, digFunction)
     local success, data = inspectFunction()
