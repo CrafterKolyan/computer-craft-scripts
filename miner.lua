@@ -33,7 +33,12 @@ blocksWhitelist = Set({
     "minecraft:lapis_ore",
     "minecraft:emerald_ore",
     "minecraft:diamond_ore",
-    "thermal:apatite_ore"
+    "thermal:apatite_ore",
+    "thermal:cinnabar_ore",
+    "thermal:niter_ore",
+    "thermal:sulfur_ore",
+    "create:dolomite",
+    "create:zinc_ore",
 })
 
 function digGenericIfAllowed(inspectFunction, digFunction)
