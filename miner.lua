@@ -40,6 +40,7 @@ blocksWhitelist = Set({
     "thermal:sulfur_ore",
     "create:dolomite",
     "create:zinc_ore",
+    "forbidden_arcanus:xpetrified_ore",
 })
 
 function digGenericIfAllowed(inspectFunction, digFunction)
@@ -92,7 +93,7 @@ function step(n)
         dig()
         if hasBlockInFront() then
             print("Can't dig forward, exiting")
-            os.exit()
+            error("Can't dig forward, exiting")
         end
     end
     forwardIfPossible()
