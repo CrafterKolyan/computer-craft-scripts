@@ -50,7 +50,7 @@ blocksDroplist = Set({
     "minecraft:flint",
     "create:dolomite_cobblestone",
     "create:diorite_cobblestone",
-    "create:grainte_cobblestone"
+    "create:granite_cobblestone"
 })
 
 function refuelIfNeeded()
