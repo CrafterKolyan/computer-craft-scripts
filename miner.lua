@@ -89,6 +89,10 @@ end
 function step(n)
     if hasBlockInFront() then
         dig()
+        if hasBlockInFront() then
+            print("Can't dig forward, exiting")
+            os.exit()
+        end
     end
     forwardIfPossible()
     digUp()
