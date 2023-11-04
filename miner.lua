@@ -47,6 +47,7 @@ blocksDroplist = Set({
     "minecraft:andesite",
     "minecraft:diorite",
     "minecraft:granite",
+    "minecraft:flint",
     "create:dolomite_cobblestone",
     "create:diorite_cobblestone",
     "create:grainte_cobblestone"
