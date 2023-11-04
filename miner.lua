@@ -80,7 +80,6 @@ function step(n)
         placeTorch()
     end
     turtle.turnLeft()
-    turtle
 end
 
 function start()
