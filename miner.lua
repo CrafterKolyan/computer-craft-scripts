@@ -53,6 +53,9 @@ blocksWhitelist = Set({
     "thermal:ruby_ore",
     "create:dolomite",
     "create:zinc_ore",
+    "create:dolomite_cobblestone",
+    "create:diorite_cobblestone",
+    "create:granite_cobblestone",
     "forbidden_arcanus:xpetrified_ore",
     "appliedenergistics2:quartz_ore",
     "buddycards:luminis_ore"
