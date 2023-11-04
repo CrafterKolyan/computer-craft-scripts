@@ -58,6 +58,7 @@ blocksWhitelist = Set({
     "create:granite_cobblestone",
     "forbidden_arcanus:xpetrified_ore",
     "appliedenergistics2:quartz_ore",
+    "appliedenergistics2:charged_quartz_ore",
     "buddycards:luminis_ore"
 })
 
