@@ -35,6 +35,7 @@ blocksWhitelist = Set({
     "minecraft:diamond_ore",
     "thermal:apatite_ore",
     "thermal:cinnabar_ore",
+    "thermal:nickel_ore",
     "thermal:niter_ore",
     "thermal:sulfur_ore",
     "create:dolomite",
