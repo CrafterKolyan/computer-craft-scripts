@@ -36,6 +36,7 @@ blocksWhitelist = Set({
     "darkerdepths:aridrock_diamond_ore",
     "darkerdepths:aridrock_emerald_ore",
     "darkerdepths:aridrock_silver_ore",
+    "darkerdepths:limestone",
     "thermal:apatite_ore",
     "thermal:cinnabar_ore",
     "thermal:nickel_ore",
@@ -60,7 +61,9 @@ blocksDroplist = Set({
     "minecraft:flint",
     "create:dolomite_cobblestone",
     "create:diorite_cobblestone",
-    "create:granite_cobblestone"
+    "create:granite_cobblestone",
+    "darkerdepths:aridrock",
+    "darkerdepths:limestone",
 })
 
 function refuelIfNeeded()
