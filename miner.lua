@@ -116,13 +116,8 @@ function digDown()
     digGenericIfAllowed(turtle.inspectDown, turtle.digDown)
 end
 
-function hasBlockInFront()
-    local success, data = turtle.inspect()
-    return success
-end
-
 function forwardIfPossible()
-    if not hasBlockInFront() then
+    if not turtle.detect() then
         refuelIfNeeded()
         turtle.forward()
     end
@@ -151,7 +146,7 @@ function placeTorch()
 end
 
 function step(n)
-    if hasBlockInFront() then
+    if turtle.detect() then
         dig()
     end
     forwardIfPossible()
