@@ -51,6 +51,7 @@ blocksDroplist = Set({
 function refuelIfNeeded()
     local fuel = turtle.getFuelLevel()
     if fuel == 0 then
+        turtle.select(1)
         turtle.refuel(1)
     end
 end
