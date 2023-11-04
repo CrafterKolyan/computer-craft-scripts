@@ -1,2 +1,1 @@
-# computer-craft-scripts
-Scripts for ComputerCraft
+# Scripts for ComputerCraft
