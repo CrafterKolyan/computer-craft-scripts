@@ -21,6 +21,7 @@ allowedBlocks = Set({"minecraft:stone", "minecraft:dirt", "minecraft:gravel", "m
 function digGenericIfAllowed(inspectFunction, digFunction)
     local success, data = inspectFunction()
     if success then
+        print(allowedBlocks)
         local allowed = setContains(allowedBlocks, data.name)
         if allowed then
             digFunction()
