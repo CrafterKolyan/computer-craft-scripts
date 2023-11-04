@@ -15,6 +15,7 @@ blocksWhitelist = Set({
     "minecraft:cobblestone",
     "minecraft:dirt",
     "minecraft:gravel",
+    "minecraft:sand",
     "minecraft:andesite",
     "minecraft:diorite",
     "minecraft:granite",
@@ -118,10 +119,6 @@ end
 function step(n)
     if hasBlockInFront() then
         dig()
-        if hasBlockInFront() then
-            print("Can't dig forward, exiting")
-            error("Can't dig forward, exiting")
-        end
     end
     forwardIfPossible()
     digUp()
