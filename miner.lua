@@ -53,7 +53,18 @@ function forwardIfPossible()
     end
 end
 
-function step()
+function placeTorch()
+    local torchSlot = 2
+    local data = turtle.getItemDetail(torchSlot)
+    if data == nil or data.name ~= "minecraft:torch" then
+        return
+    end
+    turtle.select(torchSlot)
+    turtle.place()
+    turtle.select(1)
+end
+
+function step(n)
     if hasBlockInFront() then
         dig()
     end
@@ -65,8 +76,20 @@ function step()
     turtle.turnRight()
     turtle.turnRight()
     dig()
+    if n % 10 == 0 then
+        placeTorch()
+    end
     turtle.turnLeft()
+    turtle
 end
 
-step()
+function start()
+    local i = 0
+    while true do
+        step(i)
+        i = i + 1
+    end
+end
+
+start()
 
