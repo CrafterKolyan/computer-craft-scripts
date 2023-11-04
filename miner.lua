@@ -62,7 +62,8 @@ blocksWhitelist = Set({
     "forbidden_arcanus:xpetrified_ore",
     "appliedenergistics2:quartz_ore",
     "appliedenergistics2:charged_quartz_ore",
-    "buddycards:luminis_ore"
+    "buddycards:luminis_ore",
+    "randomium:randomium_ore",
 })
 
 blocksDroplist = Set({
