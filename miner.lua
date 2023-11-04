@@ -26,8 +26,6 @@ function digGenericIfAllowed(inspectFunction, digFunction)
         if allowed then
             digFunction()
         end
-    else
-        digFunction()
     end
 end
 
@@ -43,8 +41,31 @@ function digDown()
     digGenericIfAllowed(turtle.inspectDown, turtle.digDown)
 end
 
+function hasBlockInFront()
+    local success, data = turtle.inspect()
+    return success
+end
+
+function forwardIfPossible()
+    if not hasBlockInFront() then
+        refuelIfNeeded()
+        turtle.forward()
+    end
+end
+
 function step()
+    if hasBlockInFront() then
+        dig()
+    end
+    forwardIfPossible()
+    digUp()
+    digDown()
+    turtle.turnLeft()
     dig()
+    turtle.turnRight()
+    turtle.turnRight()
+    dig()
+    turtle.turnLeft()
 end
 
 step()
