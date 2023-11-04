@@ -10,13 +10,6 @@ function setContains(set, key)
     return set[key] ~= nil
 end
 
-function refuelIfNeeded()
-    local fuel = turtle.getFuelLevel()
-    if fuel == 0 then
-        turtle.refuel(1)
-    end
-end
-
 blocksWhitelist = Set({
     "minecraft:stone",
     "minecraft:cobblestone",
@@ -38,10 +31,29 @@ blocksWhitelist = Set({
     "thermal:nickel_ore",
     "thermal:niter_ore",
     "thermal:sulfur_ore",
+    "thermal:ruby_ore",
     "create:dolomite",
     "create:zinc_ore",
     "forbidden_arcanus:xpetrified_ore",
+    "appliedenergistics2:quartz_ore",
 })
+
+blocksDroplist = Set({
+    "minecraft:stone",
+    "minecraft:cobblestone",
+    "minecraft:dirt",
+    "minecraft:gravel",
+    "minecraft:andesite",
+    "minecraft:diorite",
+    "minecraft:granite",
+})
+
+function refuelIfNeeded()
+    local fuel = turtle.getFuelLevel()
+    if fuel == 0 then
+        turtle.refuel(1)
+    end
+end
 
 function digGenericIfAllowed(inspectFunction, digFunction)
     local success, data = inspectFunction()
@@ -77,6 +89,17 @@ function forwardIfPossible()
     end
 end
 
+function dropUselessBlocks()
+    for i = 1, 16 do
+        local data = turtle.getItemDetail(i)
+        if data ~= nil and setContains(blocksDroplist, data.name) then
+            turtle.select(i)
+            turtle.drop()
+        end
+    end
+    turtle.select(1)
+end
+
 function placeTorch()
     local torchSlot = 2
     local data = turtle.getItemDetail(torchSlot)
@@ -101,6 +124,7 @@ function step(n)
     digDown()
     turtle.turnLeft()
     dig()
+    dropUselessBlocks()
     turtle.turnRight()
     turtle.turnRight()
     dig()
