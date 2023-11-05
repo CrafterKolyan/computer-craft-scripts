@@ -13,7 +13,7 @@ end
 
 function isBigBarrelInSlot(n)
     local data = turtle.getItemDetail(n, true)
-    return data != nil and data.name == "minecraft:barrel" and data.lore ~= nil and data.lore[1] == "The fabled prize awaits at the bottom..."
+    return data ~= nil and data.name == "minecraft:barrel" and data.lore ~= nil and data.lore[1] == "The fabled prize awaits at the bottom..."
 end
 
 function step()
