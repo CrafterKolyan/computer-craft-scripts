@@ -16,14 +16,9 @@ function isBigBarrelInSlot(n)
     return data ~= nil and data.name == "minecraft:barrel" and data.lore ~= nil and data.lore[1] == "The fabled prize awaits at the bottom..."
 end
 
-function step()
-    turtle.select(1)
-    turtle.dig()
-    local barrelSlot = nil
+function dropDownUselessItems()
     for i = 1, 16 do
-        if isBigBarrelInSlot(i) then
-            barrelSlot = i
-        else
+        if not isBigBarrelInSlot(i) then
             local data = turtle.getItemDetail(i)
             if data ~= nil then
                 turtle.select(i)
@@ -31,13 +26,30 @@ function step()
             end
         end
     end
+end
+
+function step(n)
+    turtle.select(1)
+    turtle.dig()
+    if n % 10 == 0 then
+        dropDownUselessItems()
+    end
+    local barrelSlot = nil
+    for i = 1, 16 do
+        if isBigBarrelInSlot(i) then
+            barrelSlot = i
+            break
+        end
+    end
     turtle.select(barrelSlot)
     turtle.place()
 end
 
 function start()
+    local i = 0
     while true do
-        step()
+        step(i)
+        i += 1
     end
 end
 
