@@ -13,16 +13,13 @@ end
 
 function step()
     turtle.dig()
-    for i = 1, 16 do
-        local data = turtle.getItemDetail(16)
-        print(dump(data))
-    end
+    turtle.place()
 end
 
 function start()
-    -- while true do
+    while true do
         step()
-    -- end
+    end
 end
 
 start()
