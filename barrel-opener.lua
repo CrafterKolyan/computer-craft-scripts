@@ -40,7 +40,9 @@ end
 
 function step()
     turtle.select(1)
-    turtle.dig()
+    if turtle.detect() then
+        turtle.dig()
+    end
     local barrelSlot = nil
     for i = 1, 16 do
         if isBigBarrelInSlot(i) then
