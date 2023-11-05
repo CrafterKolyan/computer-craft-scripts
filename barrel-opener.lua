@@ -41,9 +41,6 @@ end
 function step()
     turtle.select(1)
     turtle.dig()
-    if emptySlots() <= 3 then
-        dropDownUselessItems()
-    end
     local barrelSlot = nil
     for i = 1, 16 do
         if isBigBarrelInSlot(i) then
@@ -54,6 +51,9 @@ function step()
     if barrelSlot ~= nil then
         turtle.select(barrelSlot)
         turtle.place()
+    end
+    if emptySlots() <= 3 then
+        dropDownUselessItems()
     end
 end
 
