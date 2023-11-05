@@ -49,7 +49,7 @@ function start()
     local i = 0
     while true do
         step(i)
-        i += 1
+        i = i + 1
     end
 end
 
