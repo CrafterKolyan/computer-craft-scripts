@@ -28,10 +28,20 @@ function dropDownUselessItems()
     end
 end
 
-function step(n)
+function emptySlots()
+    local result = 0
+    for i = 1, 16 do
+        if turtle.getItemCount(i) == 0 then
+            result = result + 1
+        end
+    end
+    return result
+end
+
+function step()
     turtle.select(1)
     turtle.dig()
-    if n % 10 == 0 then
+    if emptySlots() <= 3 then
         dropDownUselessItems()
     end
     local barrelSlot = nil
@@ -46,10 +56,8 @@ function step(n)
 end
 
 function start()
-    local i = 0
     while true do
-        step(i)
-        i = i + 1
+        step()
     end
 end
 
