@@ -17,13 +17,21 @@ function isBigBarrelInSlot(n)
 end
 
 function step()
+    turtle.select(1)
     turtle.dig()
+    local barrelSlot = nil
     for i = 1, 16 do
         if isBigBarrelInSlot(i) then
-            turtle.select(i)
-            break
+            barrelSlot = i
+        else
+            local data = turtle.getItemDetail(i)
+            if data ~= nil then
+                turtle.select(i)
+                turtle.dropDown()
+            end
         end
     end
+    turtle.select(barrelSlot)
     turtle.place()
 end
 
