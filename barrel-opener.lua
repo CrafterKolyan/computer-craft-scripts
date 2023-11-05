@@ -11,19 +11,26 @@ function dump(o)
    end
 end
 
+function isBigBarrelInSlot(n)
+    local data = turtle.getItemDetail(n, true)
+    return data != nil and data.name == "minecraft:barrel" and data.lore ~= nil and data.lore[1] == "The fabled prize awaits at the bottom..."
+end
+
 function step()
     turtle.dig()
-    for i = 1, 3 do
-        local data = turtle.getItemDetail(i, true)
-        print(dump(data))
+    for i = 1, 16 do
+        if isBigBarrelInSlot(i) then
+            turtle.select(i)
+            break
+        end
     end
     turtle.place()
 end
 
 function start()
-    -- while true do
+    while true do
         step()
-    -- end
+    end
 end
 
 start()
