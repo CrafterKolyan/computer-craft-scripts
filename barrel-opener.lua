@@ -51,8 +51,10 @@ function step()
             break
         end
     end
-    turtle.select(barrelSlot)
-    turtle.place()
+    if barrelSlot ~= nil then
+        turtle.select(barrelSlot)
+        turtle.place()
+    end
 end
 
 function start()
