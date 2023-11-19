@@ -166,10 +166,11 @@ end
 function start()
     local i = 0
     local firstIteration = true
+    local SIZE = 16
     while true do
         step(i)
         i = i + 1
-        i = i % (16 * 16 - 1)
+        i = i % (SIZE * SIZE - 1)
         if i == 0 then
             if firstIteration then
                 firstIteration = false
@@ -179,13 +180,13 @@ function start()
                 downIfPossible()
                 turtle.turnLeft()
             end
-        elseif i % 32 == 15 then
+        elseif i % (2 * SIZE) == SIZE - 1 then
             turtle.turnLeft()
-        elseif i % 32 == 16 then
+        elseif i % (2 * SIZE) == SIZE then
             turtle.turnLeft()
-        elseif i % 32 == 31 then
+        elseif i % (2 * SIZE) == (2 * SIZE - 1) then
             turtle.turnRight()
-        elseif i % 32 == 0 then
+        elseif i % (2 * SIZE) == 0 then
             turtle.turnRight()
         end
     end
