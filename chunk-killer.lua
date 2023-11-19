@@ -245,12 +245,12 @@ function start()
                 digDown()
             end
             downIfPossible(position)
-            turnLeft()
+            turnLeft(position)
             position = Position(0, 0, 0, "north")
         elseif position.x == SIZE - 1 then
-            turnLeft()
+            turnLeft(position)
         elseif position.x == 0 and position.z ~= 0 then
-            turnRight()
+            turnRight(position)
         end
     end
 end
