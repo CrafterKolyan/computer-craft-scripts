@@ -85,6 +85,7 @@ blocksWhitelist = Set({
     "minecraft:cobweb",
     "minecraft:rail",
     "minecraft:torch",
+    "minecraft:netherrack",
     "darkerdepths:aridrock",
     "darkerdepths:aridrock_coal_ore",
     "darkerdepths:aridrock_iron_ore",
@@ -137,6 +138,9 @@ blocksDroplist = Set({
     "minecraft:diorite",
     "minecraft:granite",
     "minecraft:flint",
+    "minecraft:oak_planks",
+    "minecraft:oak_fence",
+    "minecraft:netherrack",
     "create:dolomite",
     "create:gabbro",
     "create:dolomite_cobblestone",
@@ -147,8 +151,6 @@ blocksDroplist = Set({
     "darkerdepths:aridrock",
     "darkerdepths:limestone",
     "extcaves:brokenstone",
-    "minecraft:oak_planks",
-    "minecraft:oak_fence",
 })
 
 function refuelIfNeeded()
