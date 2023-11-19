@@ -110,6 +110,7 @@ blocksWhitelist = Set({
     "thermal:sulfur_ore",
     "thermal:ruby_ore",
     "thermal:lead_ore",
+    "thermal:sapphire_ore",
     "create:dolomite",
     "create:gabbro",
     "create:zinc_ore",
