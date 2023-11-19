@@ -175,17 +175,19 @@ function start()
             if firstIteration then
                 firstIteration = false
             else
-                dropUselessBlocks()
-                if turtle.detectDown() then
-                    digDown()
-                end
-                downIfPossible()
-                if turtle.detectDown() then
-                    digDown()
-                end
-                downIfPossible()
                 turtle.turnLeft()
             end
+        elseif i == (SIZE * SIZE - 1) then
+            dropUselessBlocks()
+            if turtle.detectDown() then
+                digDown()
+            end
+            downIfPossible()
+            if turtle.detectDown() then
+                digDown()
+            end
+            downIfPossible()
+            turtle.turnLeft()
         elseif i % (2 * SIZE) == SIZE - 1 then
             turtle.turnLeft()
         elseif i % (2 * SIZE) == SIZE then
