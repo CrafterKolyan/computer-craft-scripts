@@ -174,6 +174,7 @@ function start()
             if firstIteration then
                 firstIteration = false
             else
+                dropUselessBlocks()
                 downIfPossible()
                 downIfPossible()
                 turtle.turnLeft()
