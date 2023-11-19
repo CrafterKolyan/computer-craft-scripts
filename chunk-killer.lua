@@ -230,12 +230,10 @@ function step(position)
 end
 
 function start()
-    local i = 0
     local SIZE = 16
     local position = Position(0, 0, 0, "north")
     while true do
         step()
-        print("Step " .. i)
         print("Position: " .. position.x .. " " .. position.y .. " " .. position.z .. " " .. position.facing)
         if position.z == SIZE - 1 && position.z == 0 then
             dropUselessBlocks()
@@ -248,13 +246,12 @@ function start()
             end
             downIfPossible(position)
             turnLeft()
+            position = Position(0, 0, 0, "north")
         elseif position.x == SIZE - 1 then
             turnLeft()
         elseif position.x == 0 and position.z ~= 0 then
             turnRight()
         end
-        i = i + 1
-        i = i % (SIZE * SIZE)
     end
 end
 
