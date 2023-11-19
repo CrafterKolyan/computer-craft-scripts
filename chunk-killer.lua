@@ -10,6 +10,59 @@ function setContains(set, key)
     return set[key] ~= nil
 end
 
+function Position(x, y, z, facing)
+    local position = {}
+    position.x = x
+    position.y = y
+    position.z = z
+    position.facing = facing
+    return position
+end
+
+function positionForward(position)
+    if position.facing == "north" then
+        position.x = position.x + 1
+    elseif position.facing == "south" then
+        position.x = position.x - 1
+    elseif position.facing == "east" then
+        position.z = position.z + 1
+    elseif position.facing == "west" then
+        position.z = position.z - 1
+    end
+    return position
+end
+
+function positionDown(position)
+    position.y = position.y - 1
+    return position
+end
+
+function positionRotateLeft(position)
+    if position.facing == "north" then
+        position.facing = "west"
+    elseif position.facing == "south" then
+        position.facing = "east"
+    elseif position.facing == "east" then
+        position.facing = "north"
+    elseif position.facing == "west" then
+        position.facing = "south"
+    end
+    return position
+end
+
+function positionRotateRight(position)
+    if position.facing == "north" then
+        position.facing = "east"
+    elseif position.facing == "south" then
+        position.facing = "west"
+    elseif position.facing == "east" then
+        position.facing = "south"
+    elseif position.facing == "west" then
+        position.facing = "north"
+    end
+    return position
+end
+
 blocksWhitelist = Set({
     "minecraft:stone",
     "minecraft:cobblestone",
@@ -125,21 +178,34 @@ function digDown()
     digGenericIfAllowed(turtle.inspectDown, turtle.digDown)
 end
 
-function moveIfPossible(detectFunction, moveFunction)
+function moveIfPossible(position, detectFunction, moveFunction, positionFunction)
     if not detectFunction() then
         refuelIfNeeded()
-        moveFunction()
+        local result = moveFunction()
+        if result then
+            positionFunction(position)
+        end
     else
         error("Unexpected state. Can't move after digging")
     end
 end
 
-function forwardIfPossible()
-    moveIfPossible(turtle.detect, turtle.forward)
+function forwardIfPossible(position)
+    moveIfPossible(position, turtle.detect, turtle.forward, positionForward)
 end
 
-function downIfPossible()
-    moveIfPossible(turtle.detectDown, turtle.down)
+function downIfPossible(position)
+    moveIfPossible(position, turtle.detectDown, turtle.down, positionDown)
+end
+
+function turnLeft(position)
+    turtle.turnLeft()
+    positionRotateLeft(position)
+end
+
+function turnRight(position)
+    turtle.turnRight()
+    positionRotateRight(position)
 end
 
 function dropUselessBlocks()
@@ -153,50 +219,42 @@ function dropUselessBlocks()
     turtle.select(1)
 end
 
-function step(n)
+function step(position)
     if turtle.detect() then
         dig()
     end
     if turtle.detectDown() then
         digDown()
     end
-    forwardIfPossible()
+    forwardIfPossible(position)
 end
 
 function start()
     local i = 0
-    local firstIteration = true
     local SIZE = 16
+    local position = Position(0, 0, 0, "north")
     while true do
-        step(i)
-        i = i + 1
-        i = i % (SIZE * SIZE)
-        if i == 0 then
-            if firstIteration then
-                firstIteration = false
-            else
-                turtle.turnLeft()
-            end
-        elseif i == (SIZE * SIZE - 1) then
+        step()
+        print("Step " .. i)
+        print("Position: " .. position.x .. " " .. position.y .. " " .. position.z .. " " .. position.facing)
+        if position.z == SIZE - 1 && position.z == 0 then
             dropUselessBlocks()
             if turtle.detectDown() then
                 digDown()
             end
-            downIfPossible()
+            downIfPossible(position)
             if turtle.detectDown() then
                 digDown()
             end
-            downIfPossible()
-            turtle.turnLeft()
-        elseif i % (2 * SIZE) == SIZE - 1 then
-            turtle.turnLeft()
-        elseif i % (2 * SIZE) == SIZE then
-            turtle.turnLeft()
-        elseif i % (2 * SIZE) == (2 * SIZE - 1) then
-            turtle.turnRight()
-        elseif i % (2 * SIZE) == 0 then
-            turtle.turnRight()
+            downIfPossible(position)
+            turnLeft()
+        elseif position.x == SIZE - 1 then
+            turnLeft()
+        elseif position.x == 0 and position.z ~= 0 then
+            turnRight()
         end
+        i = i + 1
+        i = i % (SIZE * SIZE)
     end
 end
 
