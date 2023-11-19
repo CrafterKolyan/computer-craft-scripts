@@ -27,6 +27,11 @@ blocksWhitelist = Set({
     "minecraft:lapis_ore",
     "minecraft:emerald_ore",
     "minecraft:diamond_ore",
+    "minecraft:oak_planks",
+    "minecraft:oak_fence",
+    "minecraft:cobweb",
+    "minecraft:rail",
+    "minecraft:torch",
     "darkerdepths:aridrock",
     "darkerdepths:aridrock_coal_ore",
     "darkerdepths:aridrock_iron_ore",
@@ -64,6 +69,7 @@ blocksWhitelist = Set({
     "appliedenergistics2:charged_quartz_ore",
     "buddycards:luminis_ore",
     "randomium:randomium_ore",
+    "extcaves:brokenstone",
 })
 
 blocksDroplist = Set({
@@ -84,6 +90,9 @@ blocksDroplist = Set({
     "create:gabbro_cobblestone",
     "darkerdepths:aridrock",
     "darkerdepths:limestone",
+    "extcaves:brokenstone",
+    "minecraft:oak_planks",
+    "minecraft:oak_fence",
 })
 
 function refuelIfNeeded()
