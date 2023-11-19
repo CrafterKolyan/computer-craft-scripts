@@ -235,7 +235,7 @@ function start()
     while true do
         step(position)
         print("Position: " .. position.x .. " " .. position.y .. " " .. position.z .. " " .. position.facing)
-        if position.z == SIZE - 1 and position.z == 0 then
+        if position.x == SIZE - 1 and position.z == 0 then
             dropUselessBlocks()
             if turtle.detectDown() then
                 digDown()
