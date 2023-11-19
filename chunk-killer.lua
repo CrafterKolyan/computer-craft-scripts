@@ -170,13 +170,19 @@ function start()
     while true do
         step(i)
         i = i + 1
-        i = i % (SIZE * SIZE - 1)
+        i = i % (SIZE * SIZE)
         if i == 0 then
             if firstIteration then
                 firstIteration = false
             else
                 dropUselessBlocks()
+                if turtle.detectDown() then
+                    digDown()
+                end
                 downIfPossible()
+                if turtle.detectDown() then
+                    digDown()
+                end
                 downIfPossible()
                 turtle.turnLeft()
             end
