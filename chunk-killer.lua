@@ -169,9 +169,9 @@ function start()
                 downIfPossible()
                 turtle.turnLeft()
             end
-        elseif i % 31 == 15 then
+        elseif i % 32 == 15 then
             turtle.turnLeft()
-        elseif i % 31 == 16 then
+        elseif i % 32 == 16 then
             turtle.turnLeft()
         elseif i % 32 == 31 then
             turtle.turnRight()
