@@ -233,7 +233,7 @@ function start()
     local SIZE = 16
     local position = Position(0, 0, 0, "north")
     while true do
-        step()
+        step(position)
         print("Position: " .. position.x .. " " .. position.y .. " " .. position.z .. " " .. position.facing)
         if position.z == SIZE - 1 and position.z == 0 then
             dropUselessBlocks()
