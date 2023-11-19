@@ -25,9 +25,9 @@ function positionForward(position)
     elseif position.facing == "south" then
         position.x = position.x - 1
     elseif position.facing == "east" then
-        position.z = position.z + 1
-    elseif position.facing == "west" then
         position.z = position.z - 1
+    elseif position.facing == "west" then
+        position.z = position.z + 1
     end
     return position
 end
