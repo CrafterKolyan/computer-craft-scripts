@@ -116,13 +116,21 @@ function digDown()
     digGenericIfAllowed(turtle.inspectDown, turtle.digDown)
 end
 
-function forwardIfPossible()
-    if not turtle.detect() then
+function moveIfPossible(detectFunction, moveFunction)
+    if not detectFunction() then
         refuelIfNeeded()
-        turtle.forward()
+        moveFunction()
     else
-        error("Unexpected state. Block in front of turtle after digging")
+        error("Unexpected state. Can't move after digging")
     end
+end
+
+function forwardIfPossible()
+    moveIfPossible(turtle.detect, turtle.forward)
+end
+
+function downIfPossible()
+    moveIfPossible(turtle.detectDown, turtle.down)
 end
 
 function dropUselessBlocks()
@@ -148,12 +156,19 @@ end
 
 function start()
     local i = 0
+    local firstIteration = true
     while true do
         step(i)
         i = i + 1
         i = i % (16 * 16 - 1)
         if i == 0 then
-            dropUselessBlocks()
+            if firstIteration then
+                firstIteration = false
+            else
+                downIfPossible()
+                downIfPossible()
+                turtle.turnLeft()
+            end
         elseif i % 31 == 15 then
             turtle.turnLeft()
         elseif i % 31 == 16 then
