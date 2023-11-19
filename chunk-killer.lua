@@ -120,8 +120,11 @@ blocksWhitelist = Set({
     "create:granite_cobblestone",
     "create:andesite_cobblestone",
     "create:gabbro_cobblestone",
+    "forbidden_arcanus:darkstone",
     "forbidden_arcanus:xpetrified_ore",
+    "forbidden_arcanus:arcane_crystal_ore",
     "forbidden_arcanus:runestone",
+    "forbidden_arcanus:dark_runestone",
     "appliedenergistics2:quartz_ore",
     "appliedenergistics2:charged_quartz_ore",
     "buddycards:luminis_ore",
@@ -151,6 +154,7 @@ blocksDroplist = Set({
     "darkerdepths:aridrock",
     "darkerdepths:limestone",
     "extcaves:brokenstone",
+    "forbidden_arcanus:darkstone",
 })
 
 function refuelIfNeeded()
